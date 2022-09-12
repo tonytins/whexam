@@ -5,6 +5,8 @@ const MOUSE_SENS = 0.5
 
 onready var anim_player = $AnimationPlayer
 onready var raycast = $RayCast
+onready var health_meter = $CanvasLayer/Control/Stat/Health/HealthStat
+onready var armor_meter = $CanvasLayer/Control/Stat/Armor/ArmorStat
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -42,4 +44,14 @@ func _physics_process(delta):
 			coll.kill()
 
 func kill():
-	get_tree().reload_current_scene()
+	# If armor is zero, lose health faster.
+	# Otherwise, armor depletes health at a lower rate.
+	match armor_meter.value:
+		0:
+			if health_meter.value == 0:
+				get_tree().reload_current_scene()
+			else:
+				health_meter.value -= 0.5
+		_:
+			health_meter.value -= 0.1
+			armor_meter.value -= 0.5

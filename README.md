@@ -8,4 +8,4 @@ A [Boomer Shooter](https://www.urbandictionary.com/define.php?term=Boomer%20Shoo
 
 ## License
 
-This project is dual-licensed under the [BSD-3-Clause](LICENSE) or the [Unlicense](UNLICENSE).
+This project is dual-licensed under the [Apache-2.0](LICENSE) or the [Unlicense](UNLICENSE).

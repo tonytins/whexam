@@ -1,0 +1,72 @@
+{
+    "scene1": [
+        {
+            "character": "Police Chief",
+            "dialog": [
+                "Who is this person?"
+            ]
+        },
+        {
+            "character": "Police Detective",
+            "dialog": [
+                "He goes by the name of Ishard."
+            ]
+        },
+        {
+            "character": "Police Chief",
+            "dialog": [
+                "We need to put a stop to their vigilantly behavior."
+            ]
+        },
+        {
+            "character": "Police Detective",
+            "dialog": [
+                "Why? He is doing us a favor."
+            ]
+        },
+        {
+            "character": "Police Chief",
+            "dialog": [
+                "He doing our jobs!"
+            ]
+        },
+        {
+            "character": "Police Detective",
+            "dialog": [
+                "And who's fault is that?"
+            ]
+        },
+        {
+            "character": "Police Chief",
+            "dialog": [
+                "Do you want to loose yours?"
+            ]
+        },
+        {
+            "character": "Police Detective",
+            "dialog": [
+                "How about you work with them instead of against? He could become our ally."
+            ]
+        },
+        {
+            "character": "Police Chief",
+            "dialog": [
+                "And why should I do that?"
+            ]
+        },
+        {
+            "character": "Police Detective",
+            "dialog": [
+                "Because the public already loves them."
+            ]
+        },
+        {
+            "character": "Police Chief",
+            "dialog": [
+                "We will work with him for now.",
+                "But if he makes one fuck up.",
+                "Game over."
+            ]
+        }
+    ]
+}

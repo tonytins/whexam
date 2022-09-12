@@ -54,7 +54,56 @@ anims/shoot = SubResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stat" type="VBoxContainer" parent="CanvasLayer/Control"]
+anchor_left = 0.015625
+anchor_top = 0.911667
+anchor_right = 0.239258
+anchor_bottom = 0.978333
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Health" type="HSplitContainer" parent="CanvasLayer/Control/Stat"]
+margin_right = 229.0
+margin_bottom = 14.0
+
+[node name="Health" type="Label" parent="CanvasLayer/Control/Stat/Health"]
+margin_right = 50.0
+margin_bottom = 14.0
+text = "Health"
+uppercase = true
+
+[node name="HealthStat" type="ProgressBar" parent="CanvasLayer/Control/Stat/Health"]
+margin_left = 62.0
+margin_right = 229.0
+margin_bottom = 14.0
+value = 100.0
+
+[node name="Armor" type="HSplitContainer" parent="CanvasLayer/Control/Stat"]
+margin_top = 18.0
+margin_right = 229.0
+margin_bottom = 32.0
+
+[node name="Armor" type="Label" parent="CanvasLayer/Control/Stat/Armor"]
+margin_right = 48.0
+margin_bottom = 14.0
+text = "Armor"
+uppercase = true
+
+[node name="ArmorStat" type="ProgressBar" parent="CanvasLayer/Control/Stat/Armor"]
+margin_left = 60.0
+margin_right = 229.0
+margin_bottom = 14.0
+value = 100.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -65,14 +114,8 @@ margin_right = 16.0
 margin_bottom = 16.0
 texture = ExtResource( 2 )
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Control"]
-position = Vector2( 256, -256 )
+position = Vector2( 768, 344 )
 texture = ExtResource( 3 )
 hframes = 4
 frame = 1

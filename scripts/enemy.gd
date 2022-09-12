@@ -1,6 +1,6 @@
 extends KinematicBody
 
-const MOVE_SPEED = 3
+const MOVE_SPEED = 2
 
 onready var raycast = $RayCast
 onready var anim_player = $AnimationPlayer
@@ -28,8 +28,7 @@ func _physics_process(delta):
 		var coll = raycast.get_collider()
 		if coll != null and coll.name == "Player":
 			coll.kill()
-	
-
+			
 func kill():
 	dead = true
 	$CollisionShape.disabled = true
