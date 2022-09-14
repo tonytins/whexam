@@ -1,6 +1,8 @@
 extends KinematicBody
 
 const MOVE_SPEED = 2
+const PLAYER_INF = 5
+const PLAYER_XP = 10
 
 onready var raycast = $RayCast
 onready var anim_player = $AnimationPlayer
@@ -33,6 +35,11 @@ func kill():
 	dead = true
 	$CollisionShape.disabled = true
 	anim_player.play("die")
+	if Economy.influence >= 0:
+		Economy.influence += PLAYER_INF
+	
+	if Economy.experience >= 0:
+		Economy.experience += PLAYER_XP
 
 func set_player(p):
 	player = p

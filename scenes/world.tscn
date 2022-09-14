@@ -12,6 +12,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.35874, 1.31683, 0 )
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32975, 1.31683, -12.065 )
 
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32975, 1.31683, -5.4621 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06834, 1.31683, -12.065 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32975, 1.31683, -17.4544 )
+
 [node name="warehouse" parent="." instance=ExtResource( 3 )]
 __meta__ = {
 "_edit_lock_": true

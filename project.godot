@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Jsonhelper="*res://scripts/autoload/jsonhelper.gd"
+Economy="*res://scripts/autoload/economy.gd"
 
 [gui]
 

@@ -61,63 +61,146 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Stat" type="VBoxContainer" parent="CanvasLayer/Control"]
-anchor_left = 0.0263672
-anchor_top = 0.0466667
-anchor_right = 0.25
-anchor_bottom = 0.113333
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer/Control"]
+anchor_left = 0.484375
+anchor_top = 0.473333
+anchor_right = 0.515625
+anchor_bottom = 0.526667
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
-
-[node name="Health" type="HSplitContainer" parent="CanvasLayer/Control/Stat"]
-margin_right = 229.0
-margin_bottom = 14.0
-
-[node name="Health" type="Label" parent="CanvasLayer/Control/Stat/Health"]
-margin_right = 50.0
-margin_bottom = 14.0
-text = "Health"
-uppercase = true
-
-[node name="HealthStat" type="ProgressBar" parent="CanvasLayer/Control/Stat/Health"]
-margin_left = 62.0
-margin_right = 229.0
-margin_bottom = 14.0
-value = 100.0
-
-[node name="Armor" type="HSplitContainer" parent="CanvasLayer/Control/Stat"]
-margin_top = 18.0
-margin_right = 229.0
-margin_bottom = 32.0
-
-[node name="Armor" type="Label" parent="CanvasLayer/Control/Stat/Armor"]
-margin_right = 48.0
-margin_bottom = 14.0
-text = "Armor"
-uppercase = true
-
-[node name="ArmorStat" type="ProgressBar" parent="CanvasLayer/Control/Stat/Armor"]
-margin_left = 60.0
-margin_right = 229.0
-margin_bottom = 14.0
-value = 100.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Control"]
 position = Vector2( 768, 344 )
 texture = ExtResource( 3 )
 hframes = 4
 frame = 1
+
+[node name="StatCtr" type="Panel" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+margin_bottom = 25.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HealthCtr" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
+anchor_left = 0.00683594
+anchor_top = 0.16
+anchor_right = 0.191406
+anchor_bottom = 0.8
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="HealthLbl" type="Label" parent="CanvasLayer/Control/StatCtr/HealthCtr"]
+margin_top = 1.0
+margin_right = 50.0
+margin_bottom = 15.0
+text = "Health"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="HealthStat" type="ProgressBar" parent="CanvasLayer/Control/StatCtr/HealthCtr"]
+margin_left = 62.0
+margin_right = 189.0
+margin_bottom = 14.0
+value = 100.0
+
+[node name="ArmorCtr" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
+anchor_left = 0.200195
+anchor_top = 0.16
+anchor_right = 0.384766
+anchor_bottom = 0.8
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="Armor" type="Label" parent="CanvasLayer/Control/StatCtr/ArmorCtr"]
+margin_top = 1.0
+margin_right = 48.0
+margin_bottom = 15.0
+text = "Armor"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="ArmorStat" type="ProgressBar" parent="CanvasLayer/Control/StatCtr/ArmorCtr"]
+margin_left = 60.0
+margin_right = 189.0
+margin_bottom = 14.0
+value = 100.0
+
+[node name="Inf" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
+anchor_left = 0.87207
+anchor_top = 0.24
+anchor_right = 0.993164
+anchor_bottom = 0.8
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="InfLbl" type="Label" parent="CanvasLayer/Control/StatCtr/Inf"]
+margin_right = 26.0
+margin_bottom = 14.0
+text = "inf."
+align = 1
+valign = 1
+uppercase = true
+
+[node name="InfStat" type="Label" parent="CanvasLayer/Control/StatCtr/Inf"]
+margin_left = 38.0
+margin_right = 124.0
+margin_bottom = 14.0
+text = "0"
+valign = 1
+
+[node name="XP" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
+anchor_left = 0.791016
+anchor_top = 0.24
+anchor_right = 0.858398
+anchor_bottom = 0.8
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="XPLbl" type="Label" parent="CanvasLayer/Control/StatCtr/XP"]
+margin_right = 16.0
+margin_bottom = 14.0
+text = "XP"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="XPStat" type="Label" parent="CanvasLayer/Control/StatCtr/XP"]
+margin_left = 28.0
+margin_right = 69.0
+margin_bottom = 14.0
+text = "0"
+valign = 1
+
+[node name="Level" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
+anchor_left = 0.702148
+anchor_top = 0.24
+anchor_right = 0.765625
+anchor_bottom = 0.8
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LevelLbl" type="Label" parent="CanvasLayer/Control/StatCtr/Level"]
+margin_right = 26.0
+margin_bottom = 14.0
+text = "Lvl."
+uppercase = true
+
+[node name="LevelStat" type="Label" parent="CanvasLayer/Control/StatCtr/Level"]
+margin_left = 38.0
+margin_right = 65.0
+margin_bottom = 14.0
+text = "1"
 
 [node name="Camera" type="Camera" parent="."]
