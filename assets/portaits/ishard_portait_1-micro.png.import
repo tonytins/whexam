@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pause.png-d497048eb98995ab9a2a1bb8927ffe58.stex"
+path="res://.import/ishard_portait_1-micro.png-a0f7cd543e9f3cf5e7561b3b73ff9ac7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pause.png"
-dest_files=[ "res://.import/pause.png-d497048eb98995ab9a2a1bb8927ffe58.stex" ]
+source_file="res://assets/portaits/ishard_portait_1-micro.png"
+dest_files=[ "res://.import/ishard_portait_1-micro.png-a0f7cd543e9f3cf5e7561b3b73ff9ac7.stex" ]
 
 [params]
 
