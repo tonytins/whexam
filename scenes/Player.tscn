@@ -84,13 +84,13 @@ __meta__ = {
 
 [node name="HUD" parent="CanvasLayer/Control" instance=ExtResource( 8 )]
 
-[node name="Pause" type="Control" parent="CanvasLayer/Control"]
+[node name="PauseMenu" type="Control" parent="CanvasLayer/Control"]
 pause_mode = 2
 anchor_bottom = 1.0
 margin_right = 151.0
 theme = ExtResource( 6 )
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Pause"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/PauseMenu"]
 material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -100,19 +100,19 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="PauseCtn" type="VBoxContainer" parent="CanvasLayer/Control/Pause"]
+[node name="PauseCtn" type="VBoxContainer" parent="CanvasLayer/Control/PauseMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 50.0
 
-[node name="ResumeBtn" type="Button" parent="CanvasLayer/Control/Pause/PauseCtn"]
+[node name="ResumeBtn" type="Button" parent="CanvasLayer/Control/PauseMenu/PauseCtn"]
 margin_right = 151.0
 margin_bottom = 56.0
 text = "Resume"
 icon = ExtResource( 7 )
 flat = true
 
-[node name="RestartBtn" type="Button" parent="CanvasLayer/Control/Pause/PauseCtn"]
+[node name="RestartBtn" type="Button" parent="CanvasLayer/Control/PauseMenu/PauseCtn"]
 margin_top = 60.0
 margin_right = 151.0
 margin_bottom = 116.0
@@ -121,7 +121,7 @@ text = "Restart"
 icon = ExtResource( 5 )
 flat = true
 
-[node name="ExitBtn" type="Button" parent="CanvasLayer/Control/Pause/PauseCtn"]
+[node name="ExitBtn" type="Button" parent="CanvasLayer/Control/PauseMenu/PauseCtn"]
 margin_top = 120.0
 margin_right = 151.0
 margin_bottom = 176.0
@@ -129,8 +129,25 @@ text = "Exit"
 icon = ExtResource( 4 )
 flat = true
 
+[node name="DbgResumeBtn" type="Button" parent="CanvasLayer/Control"]
+pause_mode = 2
+visible = false
+margin_left = 931.0
+margin_top = 9.0
+margin_right = 1006.0
+margin_bottom = 35.0
+custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
+text = "RESUME"
+flat = true
+icon_align = 1
+
 [node name="Camera" type="Camera" parent="."]
 
-[connection signal="pressed" from="CanvasLayer/Control/Pause/PauseCtn/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Pause/PauseCtn/RestartBtn" to="." method="_on_RestartBtn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Pause/PauseCtn/ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PauseMenu/PauseCtn/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PauseMenu/PauseCtn/RestartBtn" to="." method="_on_RestartBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PauseMenu/PauseCtn/ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/DbgResumeBtn" to="." method="_on_DbgResumeBtn_pressed"]

@@ -11,7 +11,8 @@ var is_paused = true
 onready var anim_player = $AnimationPlayer
 onready var raycast = $RayCast
 onready var hud = $CanvasLayer/Control/HUD
-onready var pause_screen = $CanvasLayer/Control/Pause
+onready var pause_screen = $CanvasLayer/Control/PauseMenu
+onready var debug_resume_btn = $CanvasLayer/Control/DbgResumeBtn
 
 func _ready():
 	pause_screen.hide()
@@ -24,6 +25,13 @@ func _input(event):
 		rotation_degrees.y -= MOUSE_SENS * event.relative.x
 
 func _process(delta):
+	
+	if Input.is_action_just_pressed("debug_screenshot"):
+		var msg_txt = get_node("CanvasLayer/Control/HUD/MessageTxt")
+		msg_txt.text = "DEBUG SCREENSHOT"
+		debug_resume_btn.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().paused = true
 	
 	if Input.is_action_just_pressed("exit"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -58,11 +66,14 @@ func _physics_process(delta):
 func kill():
 	get_tree().reload_current_scene()
 	
+func _resume_gameplay():
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 func _on_ResumeBtn_pressed():
 	pause_screen.hide()
 	hud.show()
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_resume_gameplay()
 
 func _on_ExitBtn_pressed():
 	get_tree().quit()
@@ -74,6 +85,8 @@ func _on_RestartBtn_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().reload_current_scene()
 
-func _on_PlayerWindow_hide():
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+func _on_DbgResumeBtn_pressed():
+	var msg_txt = get_node("CanvasLayer/Control/HUD/MessageTxt")
+	msg_txt.text = ""
+	debug_resume_btn.hide()
+	_resume_gameplay()

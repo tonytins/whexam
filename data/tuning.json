@@ -5,12 +5,12 @@
         "max_inf": 100000
     },
     "enemies": {
-        "thugs_easy": {
+        "gang_easy": {
             "max_health": 100,
             "inf_drop": 50,
             "xp_drop": 30
         },
-        "thugs_med": {
+        "gang_med": {
             "max_health": 150,
             "inf_drop": 100,
             "xp_drop": 50

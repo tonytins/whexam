@@ -33,7 +33,7 @@ func _physics_process(delta):
 			
 func kill():
 	var balance = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "balance")
-	var drop_rates = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "enemies")["thugs_easy"]
+	var drop_rates = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "enemies")["gang_easy"]
 	
 	if PlayerStat.influence < balance["max_inf"]:
 		PlayerStat.influence += drop_rates["inf_drop"]
