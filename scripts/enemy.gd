@@ -35,7 +35,7 @@ func kill():
 	dead = true
 	$CollisionShape.disabled = true
 	anim_player.play("die")
-	if Economy.influence >= 0:
+	if Economy.influence < Economy.INF_CAP:
 		Economy.influence += PLAYER_INF
 	
 	if Economy.experience >= 0:

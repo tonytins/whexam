@@ -1,5 +1,7 @@
 extends Node
 
+const INF_CAP = 10000000
+const XP_CAP = 100
+
 var influence = 0
-var max_inf = 1000
 var experience = 0

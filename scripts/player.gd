@@ -8,15 +8,19 @@ const MAX_XP = 100
 var level = 1
 var prev_level = 1
 var xp = 1
+var is_paused = true
 
 # Infrastructure
 onready var anim_player = $AnimationPlayer
+onready var crosshair = $CanvasLayer/Control/Crosshair
 onready var raycast = $RayCast
+onready var pause_texture = preload("res://assets/pause.png")
+onready var crosshair_texture = preload("res://assets/crosshair.png")
 
 # Player Status
 onready var health_stat = $CanvasLayer/Control/StatCtr/HealthCtr/HealthStat
 onready var armor_stat = $CanvasLayer/Control/StatCtr/ArmorCtr/ArmorStat
-onready var influence_stat = $CanvasLayer/Control/StatCtr/Influence/InfStat
+onready var influence_stat = $CanvasLayer/Control/StatCtr/Inf/InfStat
 onready var level_stat = $CanvasLayer/Control/StatCtr/Level/LevelStat
 onready var xp_stat = $CanvasLayer/Control/StatCtr/XP/XPStat
 
@@ -36,12 +40,21 @@ func _process(delta):
 	if xp >= MAX_XP:
 		prev_level = level
 		level += 2
-		
-	if level > prev_level:
-		Economy.max_inf * 1000
 	
-	if Input.is_action_pressed("exit"):
+	if Input.is_action_pressed("pause") and !is_paused:
+		get_tree().paused = true
+		is_paused = true
+		crosshair.texture = pause_texture
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	elif Input.is_action_pressed("pause") and is_paused:
+		is_paused = false
+		crosshair.texture = crosshair_texture
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		get_tree().paused = false
+		
+	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
+	
 	if Input.is_action_pressed("restart"):
 		kill()
 

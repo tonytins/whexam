@@ -1,0 +1,11 @@
+{
+    "level_cap": 10,
+    "max_ep": 100,
+    "max_inf": 1000000,
+    "enemy_rates": {
+        "lvl1-2": {
+            "inf": 100,
+            "xp": 30
+        }
+    }
+}
