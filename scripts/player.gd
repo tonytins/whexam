@@ -4,10 +4,9 @@ const MOVE_SPEED = 4
 const MOUSE_SENS = 0.5
 const LEVEL_CAP = 10
 const MAX_XP = 100
+const DATA_DIR = "res://data/"
+const TUNING_FILE = "tuning.json"
 
-var level = 1
-var prev_level = 1
-var xp = 1
 var is_paused = true
 
 # Infrastructure
@@ -34,12 +33,12 @@ func _input(event):
 		rotation_degrees.y -= MOUSE_SENS * event.relative.x
 
 func _process(delta):
-	influence_stat.text = str(Economy.influence)
-	xp_stat.text = str(Economy.experience)
+	var max_xp = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "max_xp")
 	
-	if xp >= MAX_XP:
-		prev_level = level
-		level += 2
+	if PlayerStat.experience >= max_xp:
+		PlayerStat.prev_level = PlayerStat.level
+		PlayerStat.experience = 0
+		PlayerStat.level += 1
 	
 	if Input.is_action_pressed("pause") and !is_paused:
 		get_tree().paused = true
@@ -57,6 +56,10 @@ func _process(delta):
 	
 	if Input.is_action_pressed("restart"):
 		kill()
+		
+	influence_stat.text = str(PlayerStat.influence)
+	xp_stat.text = str(PlayerStat.experience)
+	level_stat.text = str(PlayerStat.level)
 
 func _physics_process(delta):
 	var move_vec = Vector3()

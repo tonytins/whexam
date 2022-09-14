@@ -62,13 +62,17 @@ __meta__ = {
 }
 
 [node name="Crosshair" type="TextureRect" parent="CanvasLayer/Control"]
-anchor_left = 0.484375
-anchor_top = 0.473333
-anchor_right = 0.515625
-anchor_bottom = 0.526667
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
 texture = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Control"]
@@ -76,12 +80,16 @@ position = Vector2( 768, 344 )
 texture = ExtResource( 3 )
 hframes = 4
 frame = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StatCtr" type="Panel" parent="CanvasLayer/Control"]
 anchor_right = 1.0
-margin_bottom = 25.0
+anchor_bottom = 0.0416667
 __meta__ = {
-"_edit_lock_": true
+"_edit_lock_": true,
+"_edit_use_anchors_": true
 }
 
 [node name="HealthCtr" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
@@ -140,6 +148,7 @@ anchor_top = 0.24
 anchor_right = 0.993164
 anchor_bottom = 0.8
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -164,30 +173,32 @@ anchor_top = 0.24
 anchor_right = 0.858398
 anchor_bottom = 0.8
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
 [node name="XPLbl" type="Label" parent="CanvasLayer/Control/StatCtr/XP"]
-margin_right = 16.0
+margin_right = 27.0
 margin_bottom = 14.0
-text = "XP"
+text = "EXP."
 align = 1
 valign = 1
 uppercase = true
 
 [node name="XPStat" type="Label" parent="CanvasLayer/Control/StatCtr/XP"]
-margin_left = 28.0
+margin_left = 39.0
 margin_right = 69.0
 margin_bottom = 14.0
 text = "0"
 valign = 1
 
 [node name="Level" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
-anchor_left = 0.702148
+anchor_left = 0.720703
 anchor_top = 0.24
-anchor_right = 0.765625
+anchor_right = 0.782227
 anchor_bottom = 0.8
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -199,8 +210,9 @@ uppercase = true
 
 [node name="LevelStat" type="Label" parent="CanvasLayer/Control/StatCtr/Level"]
 margin_left = 38.0
-margin_right = 65.0
+margin_right = 63.0
 margin_bottom = 14.0
 text = "1"
+valign = 1
 
 [node name="Camera" type="Camera" parent="."]

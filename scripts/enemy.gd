@@ -1,8 +1,8 @@
 extends KinematicBody
 
 const MOVE_SPEED = 2
-const PLAYER_INF = 5
-const PLAYER_XP = 10
+const DATA_DIR = "res://data/"
+const TUNING_FILE = "tuning.json"
 
 onready var raycast = $RayCast
 onready var anim_player = $AnimationPlayer
@@ -32,14 +32,20 @@ func _physics_process(delta):
 			coll.kill()
 			
 func kill():
+	var max_inf = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "max_inf")
+	var max_xp = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "max_xp")
+	var drop_rates = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "enemies")
+	var thugs_easy = drop_rates["thugs_easy"]
+	
+	if PlayerStat.influence < max_inf:
+		PlayerStat.influence += thugs_easy["inf_drop"]
+	
+	if PlayerStat.experience < max_xp:
+		PlayerStat.experience += thugs_easy["xp_drop"]
+		
 	dead = true
 	$CollisionShape.disabled = true
 	anim_player.play("die")
-	if Economy.influence < Economy.INF_CAP:
-		Economy.influence += PLAYER_INF
-	
-	if Economy.experience >= 0:
-		Economy.experience += PLAYER_XP
 
 func set_player(p):
 	player = p

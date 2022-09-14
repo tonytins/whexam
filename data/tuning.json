@@ -1,11 +1,17 @@
 {
-    "level_cap": 10,
-    "max_ep": 100,
+    "level_cap": 20,
+    "max_xp": 100,
     "max_inf": 1000000,
-    "enemy_rates": {
-        "lvl1-2": {
-            "inf": 100,
-            "xp": 30
+    "enemies": {
+        "thugs_easy": {
+            "max_health": 100,
+            "inf_drop": 50,
+            "xp_drop": 30
+        },
+        "thugs_med": {
+            "max_health": 150,
+            "inf_drop": 100,
+            "xp_drop": 50
         }
     }
 }
