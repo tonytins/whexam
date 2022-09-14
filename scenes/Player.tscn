@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://assets/crosshair.png" type="Texture" id=2]
 [ext_resource path="res://assets/gun.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/exit-1x.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/return-1x.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/hud_theme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/ui/forward-1x.png" type="Texture" id=7]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -37,6 +41,13 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 0, 0, 0, 0.196078 )
+
+[sub_resource type="CanvasItemMaterial" id=5]
+next_pass = SubResource( 4 )
+
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -57,20 +68,7 @@ anims/shoot = SubResource( 3 )
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Crosshair" type="TextureRect" parent="CanvasLayer/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-texture = ExtResource( 2 )
+theme = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -84,135 +82,55 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StatCtr" type="Panel" parent="CanvasLayer/Control"]
+[node name="HUD" parent="CanvasLayer/Control" instance=ExtResource( 8 )]
+
+[node name="Pause" type="Control" parent="CanvasLayer/Control"]
+pause_mode = 2
+anchor_bottom = 1.0
+margin_right = 151.0
+theme = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Pause"]
+material = SubResource( 5 )
 anchor_right = 1.0
-anchor_bottom = 0.0416667
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
-[node name="HealthCtr" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
-anchor_left = 0.00683594
-anchor_top = 0.16
-anchor_right = 0.191406
-anchor_bottom = 0.8
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
+[node name="PauseCtn" type="VBoxContainer" parent="CanvasLayer/Control/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
 
-[node name="HealthLbl" type="Label" parent="CanvasLayer/Control/StatCtr/HealthCtr"]
-margin_top = 1.0
-margin_right = 50.0
-margin_bottom = 15.0
-text = "Health"
-align = 1
-valign = 1
-uppercase = true
+[node name="ResumeBtn" type="Button" parent="CanvasLayer/Control/Pause/PauseCtn"]
+margin_right = 151.0
+margin_bottom = 56.0
+text = "Resume"
+icon = ExtResource( 7 )
+flat = true
 
-[node name="HealthStat" type="ProgressBar" parent="CanvasLayer/Control/StatCtr/HealthCtr"]
-margin_left = 62.0
-margin_right = 189.0
-margin_bottom = 14.0
-value = 100.0
+[node name="RestartBtn" type="Button" parent="CanvasLayer/Control/Pause/PauseCtn"]
+margin_top = 60.0
+margin_right = 151.0
+margin_bottom = 116.0
+disabled = true
+text = "Restart"
+icon = ExtResource( 5 )
+flat = true
 
-[node name="ArmorCtr" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
-anchor_left = 0.200195
-anchor_top = 0.16
-anchor_right = 0.384766
-anchor_bottom = 0.8
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="Armor" type="Label" parent="CanvasLayer/Control/StatCtr/ArmorCtr"]
-margin_top = 1.0
-margin_right = 48.0
-margin_bottom = 15.0
-text = "Armor"
-align = 1
-valign = 1
-uppercase = true
-
-[node name="ArmorStat" type="ProgressBar" parent="CanvasLayer/Control/StatCtr/ArmorCtr"]
-margin_left = 60.0
-margin_right = 189.0
-margin_bottom = 14.0
-value = 100.0
-
-[node name="Inf" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
-anchor_left = 0.87207
-anchor_top = 0.24
-anchor_right = 0.993164
-anchor_bottom = 0.8
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="InfLbl" type="Label" parent="CanvasLayer/Control/StatCtr/Inf"]
-margin_right = 26.0
-margin_bottom = 14.0
-text = "inf."
-align = 1
-valign = 1
-uppercase = true
-
-[node name="InfStat" type="Label" parent="CanvasLayer/Control/StatCtr/Inf"]
-margin_left = 38.0
-margin_right = 124.0
-margin_bottom = 14.0
-text = "0"
-valign = 1
-
-[node name="XP" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
-anchor_left = 0.791016
-anchor_top = 0.24
-anchor_right = 0.858398
-anchor_bottom = 0.8
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="XPLbl" type="Label" parent="CanvasLayer/Control/StatCtr/XP"]
-margin_right = 27.0
-margin_bottom = 14.0
-text = "EXP."
-align = 1
-valign = 1
-uppercase = true
-
-[node name="XPStat" type="Label" parent="CanvasLayer/Control/StatCtr/XP"]
-margin_left = 39.0
-margin_right = 69.0
-margin_bottom = 14.0
-text = "0"
-valign = 1
-
-[node name="Level" type="HSplitContainer" parent="CanvasLayer/Control/StatCtr"]
-anchor_left = 0.720703
-anchor_top = 0.24
-anchor_right = 0.782227
-anchor_bottom = 0.8
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="LevelLbl" type="Label" parent="CanvasLayer/Control/StatCtr/Level"]
-margin_right = 26.0
-margin_bottom = 14.0
-text = "Lvl."
-uppercase = true
-
-[node name="LevelStat" type="Label" parent="CanvasLayer/Control/StatCtr/Level"]
-margin_left = 38.0
-margin_right = 63.0
-margin_bottom = 14.0
-text = "1"
-valign = 1
+[node name="ExitBtn" type="Button" parent="CanvasLayer/Control/Pause/PauseCtn"]
+margin_top = 120.0
+margin_right = 151.0
+margin_bottom = 176.0
+text = "Exit"
+icon = ExtResource( 4 )
+flat = true
 
 [node name="Camera" type="Camera" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/Control/Pause/PauseCtn/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Pause/PauseCtn/RestartBtn" to="." method="_on_RestartBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Pause/PauseCtn/ExitBtn" to="." method="_on_ExitBtn_pressed"]

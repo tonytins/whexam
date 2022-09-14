@@ -1,7 +1,9 @@
 {
-    "level_cap": 20,
-    "max_xp": 100,
-    "max_inf": 1000000,
+    "balance": {
+        "level_cap": 20,
+        "max_xp": 100,
+        "max_inf": 100000
+    },
     "enemies": {
         "thugs_easy": {
             "max_health": 100,
