@@ -32,13 +32,11 @@ func _physics_process(delta):
 			coll.kill()
 			
 func kill():
-	var levels = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "levels")
-	var level_cap = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "level_cap")
-	var max_inf = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "max_inf")
+	var limits = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "limits")
 	var drop_rates = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "enemies")
 	
-	if PlayerStat.level <= level_cap:
-		if PlayerStat.level >= 4 and PlayerStat.level <= level_cap:
+	if PlayerStat.level <= limits["level_cap"]:
+		if PlayerStat.level >= 4 and PlayerStat.level <= limits["level_cap"]:
 			PlayerStat.experience += drop_rates["gang_med"]["xp_drop"]
 			PlayerStat.influence += drop_rates["gang_med"]["inf_drop"]
 		else:

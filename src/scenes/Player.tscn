@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://assets/portaits/ishard_avatar.png" type="Texture" id=2]
 [ext_resource path="res://assets/gun.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/exit-1x.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/return-1x.png" type="Texture" id=5]
@@ -82,13 +83,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HUD" parent="CanvasLayer/Control" instance=ExtResource( 8 )]
-
 [node name="PauseMenu" type="Control" parent="CanvasLayer/Control"]
 pause_mode = 2
+anchor_right = 0.147461
 anchor_bottom = 1.0
-margin_right = 151.0
 theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/PauseMenu"]
 material = SubResource( 5 )
@@ -100,10 +102,23 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="IshardAv" type="TextureRect" parent="CanvasLayer/Control/PauseMenu"]
+anchor_left = 0.284768
+anchor_top = 0.04
+anchor_right = 0.708609
+anchor_bottom = 0.15
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="PauseCtn" type="VBoxContainer" parent="CanvasLayer/Control/PauseMenu"]
+anchor_top = 0.183333
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 50.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="ResumeBtn" type="Button" parent="CanvasLayer/Control/PauseMenu/PauseCtn"]
 margin_right = 151.0
@@ -128,6 +143,8 @@ margin_bottom = 176.0
 text = "Exit"
 icon = ExtResource( 4 )
 flat = true
+
+[node name="HUD" parent="CanvasLayer/Control" instance=ExtResource( 8 )]
 
 [node name="DbgResumeBtn" type="Button" parent="CanvasLayer/Control"]
 pause_mode = 2

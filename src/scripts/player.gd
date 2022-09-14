@@ -5,8 +5,6 @@ const MOUSE_SENS = 0.5
 const DATA_DIR = "res://data/"
 const TUNING_FILE = "tuning.json"
 
-var is_paused = true
-
 # Infrastructure
 onready var anim_player = $AnimationPlayer
 onready var raycast = $RayCast
@@ -24,7 +22,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= MOUSE_SENS * event.relative.x
 
-func _process(delta):
+func _process(_delta):
 	
 	if Input.is_action_just_pressed("debug_screenshot"):
 		var msg_txt = get_node("CanvasLayer/Control/HUD/MessageTxt")

@@ -10,19 +10,18 @@ onready var level_stat = $StatPanel/Level/LevelStat
 onready var xp_stat = $StatPanel/XP/XPStat
 onready var message_txt = $MessageTxt
 
-func _process(delta):
-	var level_cap = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "level_cap")
+func _process(_delta):
+	var limits = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "limits")
 	var levels = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "levels")
 	
-	if PlayerStat.level <= level_cap:
-		if PlayerStat.experience >= levels[str(PlayerStat.level + 1)]["base_xp"]:
+	if PlayerStat.level <= limits["level_cap"]:
+		if PlayerStat.experience >= levels[str(PlayerStat.level + 1)]["required_xp"]:
 			PlayerStat.prev_level = PlayerStat.level
-			PlayerStat.experience = 0
 			PlayerStat.level += 1
 			PlayerStat.influence += levels[str(PlayerStat.level)]["bonus_inf"]
-			message_txt.text = "Required XP: " + str(levels[str(PlayerStat.level + 1)]["base_xp"]);
+			message_txt.text = "Required XP: " + str(levels[str(PlayerStat.level + 1)]["required_xp"]);
 		else:
-			message_txt.text = "Required XP: " + str(levels[str(PlayerStat.level + 1)]["base_xp"]);
+			message_txt.text = "Required XP: " + str(levels[str(PlayerStat.level + 1)]["required_xp"]);
 		
 	influence_stat.text = str(PlayerStat.influence)
 	xp_stat.text = str(PlayerStat.experience)
