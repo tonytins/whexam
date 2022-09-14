@@ -10,12 +10,12 @@
     "max_xp": 100,
     "max_inf": 1000000,
     "enemies": {
-        "thugs_easy": {
+        "gang_easy": {
             "max_health": 100,
             "inf_drop": 50,
             "xp_drop": 30
         },
-        "thugs_med": {
+        "gang_med": {
             "max_health": 150,
             "inf_drop": 100,
             "xp_drop": 50
@@ -39,3 +39,7 @@
 | ----------------- | --------------------------- |
 | ``max_health``    | The enemy's maximum health. |
 | ``[inf,xp]_drop`` | The drop rates.             |
+
+## persist.json
+
+Persist is used for saving player 

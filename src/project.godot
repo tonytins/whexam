@@ -11,13 +11,16 @@ config_version=4
 [application]
 
 config/name="Ishard"
+config/description="A Boomer Shooter-style game where you are super hero with technology-based ice powers. "
 run/main_scene="res://scenes/world.tscn"
 config/icon="res://icon.png"
+config/macos_native_icon="res://icon.icns"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
-Jsonhelper="*res://scripts/autoload/jsonhelper.gd"
 PlayerStat="*res://scripts/autoload/player_stat.gd"
+JsonHelper="*res://scripts/autoload/json_helper.gd"
 
 [display]
 

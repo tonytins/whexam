@@ -28,7 +28,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("debug_screenshot"):
 		var msg_txt = get_node("CanvasLayer/Control/HUD/MessageTxt")
-		msg_txt.text = "DEBUG SCREENSHOT"
+		msg_txt.text = "DEBUG MODE"
 		debug_resume_btn.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().paused = true

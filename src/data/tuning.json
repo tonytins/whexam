@@ -1,0 +1,56 @@
+{
+    "level_cap": 10,
+    "max_inf": 100000,
+    "levels": {
+        "1": {
+            "base_xp": 0,
+            "bonus_inf": 0
+        },
+        "2": {
+            "base_xp": 300,
+            "bonus_inf": 100
+        },
+        "3": {
+            "base_xp": 500,
+            "bonus_inf": 300
+        },
+        "4": {
+            "base_xp": 800,
+            "bonus_inf": 600
+        },
+        "5": {
+            "base_xp": 800,
+            "bonus_inf": 1000
+        },
+        "6": {
+            "base_xp": 1000,
+            "bonus_inf": 1300
+        },
+        "7": {
+            "base_xp": 1500,
+            "bonus_inf": 2600
+        },
+        "8": {
+            "base_xp": 1800,
+            "bonus_inf": 3000
+        },
+        "9": {
+            "base_xp": 200,
+            "bonus_inf": 3600
+        },
+        "10": {
+            "base_xp": 2500,
+            "bonus_inf": 4000
+        }
+    },
+    "enemies": {
+        "gang_easy": {
+            "inf_drop": 100,
+            "xp_drop": 50
+        },
+        "gang_med": {
+            "inf_drop": 150,
+            "xp_drop": 100
+        }
+    }
+}

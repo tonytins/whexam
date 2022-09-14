@@ -32,14 +32,18 @@ func _physics_process(delta):
 			coll.kill()
 			
 func kill():
-	var balance = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "balance")
-	var drop_rates = Jsonhelper.key_value(DATA_DIR, TUNING_FILE, "enemies")["gang_easy"]
+	var levels = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "levels")
+	var level_cap = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "level_cap")
+	var max_inf = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "max_inf")
+	var drop_rates = JsonHelper.key_value(DATA_DIR, TUNING_FILE, "enemies")
 	
-	if PlayerStat.influence < balance["max_inf"]:
-		PlayerStat.influence += drop_rates["inf_drop"]
-	
-	if PlayerStat.experience < balance["max_xp"]:
-		PlayerStat.experience += drop_rates["xp_drop"]
+	if PlayerStat.level <= level_cap:
+		if PlayerStat.level >= 4 and PlayerStat.level <= level_cap:
+			PlayerStat.experience += drop_rates["gang_med"]["xp_drop"]
+			PlayerStat.influence += drop_rates["gang_med"]["inf_drop"]
+		else:
+			PlayerStat.experience += drop_rates["gang_easy"]["xp_drop"]
+			PlayerStat.influence += drop_rates["gang_easy"]["inf_drop"]
 		
 	dead = true
 	$CollisionShape.disabled = true
