@@ -1,0 +1,16 @@
+{
+    "1": {
+        "Prologue": {
+            "chapters": {
+                "1": {
+                    "title": "Prologue",
+                    "scene": "Prologue.tscn"
+                },
+                "2": {
+                    "title": "Detective",
+                    "scene": "Detective.tscn"
+                }
+            }
+        }
+    }
+}

@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/gun.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/exit-1x.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/return-1x.png" type="Texture" id=5]
-[ext_resource path="res://assets/ui/hud_theme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/ui/ui_theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/ui/forward-1x.png" type="Texture" id=7]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=8]
 
@@ -102,49 +102,49 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="IshardAv" type="TextureRect" parent="CanvasLayer/Control/PauseMenu"]
-anchor_left = 0.284768
-anchor_top = 0.04
-anchor_right = 0.708609
-anchor_bottom = 0.15
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
 [node name="PauseCtn" type="VBoxContainer" parent="CanvasLayer/Control/PauseMenu"]
-anchor_top = 0.183333
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 20.0
+
+[node name="IshardAv" type="TextureRect" parent="CanvasLayer/Control/PauseMenu/PauseCtn"]
+margin_right = 151.0
+margin_bottom = 66.0
+texture = ExtResource( 2 )
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="ResumeBtn" type="Button" parent="CanvasLayer/Control/PauseMenu/PauseCtn"]
+margin_top = 70.0
 margin_right = 151.0
-margin_bottom = 56.0
+margin_bottom = 126.0
 text = "Resume"
 icon = ExtResource( 7 )
 flat = true
 
 [node name="RestartBtn" type="Button" parent="CanvasLayer/Control/PauseMenu/PauseCtn"]
-margin_top = 60.0
+margin_top = 130.0
 margin_right = 151.0
-margin_bottom = 116.0
+margin_bottom = 186.0
 disabled = true
 text = "Restart"
 icon = ExtResource( 5 )
 flat = true
 
 [node name="ExitBtn" type="Button" parent="CanvasLayer/Control/PauseMenu/PauseCtn"]
-margin_top = 120.0
+margin_top = 190.0
 margin_right = 151.0
-margin_bottom = 176.0
+margin_bottom = 246.0
 text = "Exit"
 icon = ExtResource( 4 )
 flat = true
 
 [node name="HUD" parent="CanvasLayer/Control" instance=ExtResource( 8 )]
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="DbgResumeBtn" type="Button" parent="CanvasLayer/Control"]
 pause_mode = 2
