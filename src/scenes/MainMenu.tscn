@@ -27,20 +27,20 @@ anchor_left = 0.0632911
 anchor_top = 0.0673401
 anchor_right = 0.936709
 anchor_bottom = 0.282828
-margin_bottom = -10.0
+offset_bottom = -10.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="PlayGameBtn" type="Button" parent="Panel/VSplitContainer"]
-margin_right = 138.0
-margin_bottom = 26.0
+offset_right = 138.0
+offset_bottom = 26.0
 text = "Play Game"
 
 [node name="SettingsBtn" type="Button" parent="Panel/VSplitContainer"]
-margin_top = 38.0
-margin_right = 138.0
-margin_bottom = 64.0
+offset_top = 38.0
+offset_right = 138.0
+offset_bottom = 64.0
 text = "Settings"
 
 [node name="StatusCtr" type="HBoxContainer" parent="."]
@@ -54,72 +54,72 @@ __meta__ = {
 }
 
 [node name="Level" type="HSplitContainer" parent="StatusCtr"]
-margin_left = 72.0
-margin_right = 152.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 80, 0 )
+offset_left = 72.0
+offset_right = 152.0
+offset_bottom = 20.0
+minimum_size = Vector2( 80, 0 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="LevelLbl" type="Label" parent="StatusCtr/Level"]
-margin_right = 32.0
-margin_bottom = 20.0
+offset_right = 32.0
+offset_bottom = 20.0
 text = "Lvl."
 uppercase = true
 
 [node name="LevelStat" type="Label" parent="StatusCtr/Level"]
-margin_left = 44.0
-margin_right = 80.0
-margin_bottom = 20.0
+offset_left = 44.0
+offset_right = 80.0
+offset_bottom = 20.0
 text = "0"
 valign = 1
 
 [node name="XP" type="HSplitContainer" parent="StatusCtr"]
-margin_left = 156.0
-margin_right = 256.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 156.0
+offset_right = 256.0
+offset_bottom = 20.0
+minimum_size = Vector2( 100, 0 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="XPLbl" type="Label" parent="StatusCtr/XP"]
-margin_right = 34.0
-margin_bottom = 20.0
+offset_right = 34.0
+offset_bottom = 20.0
 text = "EXP."
 align = 1
 valign = 1
 uppercase = true
 
 [node name="XPStat" type="Label" parent="StatusCtr/XP"]
-margin_left = 46.0
-margin_right = 100.0
-margin_bottom = 20.0
+offset_left = 46.0
+offset_right = 100.0
+offset_bottom = 20.0
 text = "0"
 valign = 1
 
 [node name="Inf" type="HSplitContainer" parent="StatusCtr"]
-margin_left = 260.0
-margin_right = 360.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 260.0
+offset_right = 360.0
+offset_bottom = 20.0
+minimum_size = Vector2( 100, 0 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="InfLbl" type="Label" parent="StatusCtr/Inf"]
-margin_right = 28.0
-margin_bottom = 20.0
+offset_right = 28.0
+offset_bottom = 20.0
 text = "inf."
 align = 1
 valign = 1
 uppercase = true
 
 [node name="InfStat" type="Label" parent="StatusCtr/Inf"]
-margin_left = 40.0
-margin_right = 100.0
-margin_bottom = 20.0
+offset_left = 40.0
+offset_right = 100.0
+offset_bottom = 20.0
 text = "0"
 valign = 1
 

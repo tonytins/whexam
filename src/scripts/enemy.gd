@@ -1,11 +1,11 @@
-extends KinematicBody
+extends CharacterBody3D
 
 const MOVE_SPEED = 2
 const DATA_DIR = "res://data/"
 const TUNING_FILE = "tuning.json"
 
-onready var raycast = $RayCast
-onready var anim_player = $AnimationPlayer
+@onready var raycast = $RayCast3D
+@onready var anim_player = $AnimationPlayer
 
 var player = null
 var dead = false
@@ -20,9 +20,10 @@ func _physics_process(delta):
 	if player == null:
 		return
 	
-	var vec_to_player = player.translation - translation
+	var vec_to_player = player.position - position
 	vec_to_player = vec_to_player.normalized()
-	raycast.cast_to = vec_to_player * 1.5
+	# raycast.cast_to = vec_to_player * 1.5
+	raycast.target_position = vec_to_player * 1.5
 	
 	move_and_collide(vec_to_player * MOVE_SPEED * delta)
 	
@@ -44,7 +45,7 @@ func kill():
 			PlayerStat.influence += drop_rates["gang_easy"]["inf_drop"]
 		
 	dead = true
-	$CollisionShape.disabled = true
+	$CollisionShape3D.disabled = true
 	anim_player.play("die")
 
 func set_player(p):

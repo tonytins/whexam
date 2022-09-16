@@ -1,4 +1,4 @@
-extends KinematicBody
+extends CharacterBody3D
 
 const MOVE_SPEED = 4
 const MOUSE_SENS = 0.5
@@ -6,21 +6,21 @@ const DATA_DIR = "res://data/"
 const TUNING_FILE = "tuning.json"
 
 # Infrastructure
-onready var anim_player = $AnimationPlayer
-onready var raycast = $RayCast
-onready var hud = $CanvasLayer/Control/HUD
-onready var pause_screen = $CanvasLayer/Control/PauseMenu
-onready var debug_resume_btn = $CanvasLayer/Control/DbgResumeBtn
+@onready var anim_player = $AnimationPlayer
+@onready var raycast = $RayCast3D
+@onready var hud = $CanvasLayer/Control/HUD
+@onready var pause_screen = $CanvasLayer/Control/PauseMenu
+@onready var debug_resume_btn = $CanvasLayer/Control/DbgResumeBtn
 
 func _ready():
 	pause_screen.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 	get_tree().call_group("zombies", "set_player", self)
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotation_degrees.y -= MOUSE_SENS * event.relative.x
+		rotation.y -= MOUSE_SENS * event.relative.x
 
 func _process(_delta):
 	
@@ -67,24 +67,24 @@ func kill():
 func _resume_gameplay():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-func _on_ResumeBtn_pressed():
-	pause_screen.hide()
-	hud.show()
-	_resume_gameplay()
-
-func _on_ExitBtn_pressed():
-	get_tree().quit()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-func _on_RestartBtn_pressed():
-	pause_screen.hide()
-	PlayerStat.debug_reset()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	get_tree().reload_current_scene()
 
 func _on_DbgResumeBtn_pressed():
 	var msg_txt = get_node("CanvasLayer/Control/HUD/MessageTxt")
 	msg_txt.text = ""
 	debug_resume_btn.hide()
 	_resume_gameplay()
+	
+func _on_resume_btn_pressed():
+	pause_screen.hide()
+	hud.show()
+	_resume_gameplay()
+
+func _on_restart_btn_pressed():
+	pause_screen.hide()
+	PlayerStat.debug_reset()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().reload_current_scene()
+
+func _on_exit_btn_pressed():
+	get_tree().quit()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

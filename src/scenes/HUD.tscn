@@ -1,176 +1,181 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dvy14wydp8kry"]
 
-[ext_resource path="res://scripts/hud.gd" type="Script" id=1]
-[ext_resource path="res://assets/portaits/ishard-portait-1x.png" type="Texture" id=2]
-[ext_resource path="res://assets/crosshair.png" type="Texture" id=3]
-[ext_resource path="res://assets/ui/ui_theme.tres" type="Theme" id=6]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://7wi015tqanaq" path="res://assets/crosshair.png" id="3"]
 
 [node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 6 )
-script = ExtResource( 1 )
+script = ExtResource("1")
+metadata/_edit_lock_ = true
 
 [node name="Crosshair" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("3")
 
 [node name="StatPanel" type="Panel" parent="."]
-anchor_left = 0.262207
-anchor_top = 0.91
-anchor_right = 0.737793
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15408
+anchor_top = 0.933642
+anchor_right = 0.84592
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": true
-}
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Health" type="HSplitContainer" parent="StatPanel"]
-anchor_left = 0.019178
-anchor_top = 0.110185
-anchor_right = 0.399999
-anchor_bottom = 0.480556
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
+[node name="StatCtr" type="HBoxContainer" parent="StatPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0150892
+anchor_top = 0.251571
+anchor_right = 0.975309
+anchor_bottom = 0.809711
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="HealthLbl" type="Label" parent="StatPanel/Health"]
-margin_right = 56.0
-margin_bottom = 20.0
-text = "Health"
-align = 1
-valign = 1
-uppercase = true
+[node name="Level" type="HSplitContainer" parent="StatPanel/StatCtr"]
+layout_mode = 2
+offset_right = 54.0
+offset_bottom = 26.0
 
-[node name="HealthStat" type="ProgressBar" parent="StatPanel/Health"]
-margin_left = 68.0
-margin_right = 185.46
-margin_bottom = 20.0
-value = 100.0
-
-[node name="Armor" type="HSplitContainer" parent="StatPanel"]
-anchor_left = 0.019178
-anchor_top = 0.518519
-anchor_right = 0.399999
-anchor_bottom = 0.740741
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="ArmorLbl" type="Label" parent="StatPanel/Armor"]
-margin_right = 52.0
-margin_bottom = 20.0
-text = "Armor"
-align = 1
-valign = 1
-uppercase = true
-
-[node name="ArmorStat" type="ProgressBar" parent="StatPanel/Armor"]
-margin_left = 64.0
-margin_right = 185.46
-margin_bottom = 20.0
-value = 100.0
-
-[node name="XP" type="HSplitContainer" parent="StatPanel"]
-anchor_left = 0.810715
-anchor_top = 0.555556
-anchor_right = 0.945575
-anchor_bottom = 0.925927
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="XPLbl" type="Label" parent="StatPanel/XP"]
-margin_right = 34.0
-margin_bottom = 20.0
-text = "EXP."
-align = 1
-valign = 1
-uppercase = true
-
-[node name="XPStat" type="Label" parent="StatPanel/XP"]
-margin_left = 46.0
-margin_right = 65.6768
-margin_bottom = 20.0
-text = "0"
-valign = 1
-
-[node name="Level" type="HSplitContainer" parent="StatPanel"]
-anchor_left = 0.652021
-anchor_top = 0.537037
-anchor_right = 0.786881
-anchor_bottom = 0.907408
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="LevelLbl" type="Label" parent="StatPanel/Level"]
-margin_right = 32.0
-margin_bottom = 20.0
+[node name="LevelLbl" type="Label" parent="StatPanel/StatCtr/Level"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 26.0
 text = "Lvl."
 uppercase = true
 
-[node name="LevelStat" type="Label" parent="StatPanel/Level"]
-margin_left = 44.0
-margin_right = 65.6768
-margin_bottom = 20.0
+[node name="LevelStat" type="Label" parent="StatPanel/StatCtr/Level"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 54.0
+offset_bottom = 26.0
 text = "0"
-valign = 1
 
-[node name="Inf" type="HSplitContainer" parent="StatPanel"]
-anchor_left = 0.653334
-anchor_top = 0.148149
-anchor_right = 0.962223
-anchor_bottom = 0.518519
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
+[node name="VSeparator" type="VSeparator" parent="StatPanel/StatCtr"]
+light_mask = 3
+layout_mode = 2
+offset_left = 58.0
+offset_right = 62.0
+offset_bottom = 26.0
 
-[node name="InfLbl" type="Label" parent="StatPanel/Inf"]
-margin_right = 28.0
-margin_bottom = 20.0
-text = "inf."
-align = 1
-valign = 1
+[node name="Health" type="HSplitContainer" parent="StatPanel/StatCtr"]
+layout_mode = 2
+offset_left = 66.0
+offset_right = 274.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+
+[node name="HealthLbl" type="Label" parent="StatPanel/StatCtr/Health"]
+layout_mode = 2
+offset_right = 62.0
+offset_bottom = 26.0
+text = "Health"
 uppercase = true
 
-[node name="InfStat" type="Label" parent="StatPanel/Inf"]
-margin_left = 40.0
-margin_right = 150.429
-margin_bottom = 20.0
-text = "0"
-valign = 1
+[node name="HealthStat" type="ProgressBar" parent="StatPanel/StatCtr/Health"]
+custom_minimum_size = Vector2i(0, 20)
+layout_mode = 2
+offset_left = 74.0
+offset_top = 3.0
+offset_right = 208.0
+offset_bottom = 23.0
+size_flags_vertical = 4
+show_percentage = false
 
-[node name="PlayerIcon" type="TextureRect" parent="StatPanel"]
-anchor_left = 0.411111
-anchor_top = -0.788889
-anchor_right = 0.633333
-anchor_bottom = 1.06296
-margin_right = -3.05176e-05
-margin_bottom = 0.000152588
-texture = ExtResource( 2 )
+[node name="Armor" type="HSplitContainer" parent="StatPanel/StatCtr"]
+layout_mode = 2
+offset_left = 278.0
+offset_right = 487.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+
+[node name="ArmorLbl" type="Label" parent="StatPanel/StatCtr/Armor"]
+layout_mode = 2
+offset_right = 59.0
+offset_bottom = 26.0
+text = "Armor"
+uppercase = true
+
+[node name="ArmorStat" type="ProgressBar" parent="StatPanel/StatCtr/Armor"]
+custom_minimum_size = Vector2i(0, 20)
+layout_mode = 2
+offset_left = 71.0
+offset_top = 3.0
+offset_right = 209.0
+offset_bottom = 23.0
+size_flags_vertical = 4
+show_percentage = false
+
+[node name="XP" type="HSplitContainer" parent="StatPanel/StatCtr"]
+layout_mode = 2
+anchors_preset = -1
+offset_left = 491.0
+offset_right = 700.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+
+[node name="XPLbl" type="Label" parent="StatPanel/StatCtr/XP"]
+layout_mode = 2
+offset_right = 34.0
+offset_bottom = 26.0
+text = "EXP."
+uppercase = true
+
+[node name="XPStat" type="ProgressBar" parent="StatPanel/StatCtr/XP"]
+custom_minimum_size = Vector2i(0, 20)
+layout_mode = 2
+offset_left = 46.0
+offset_top = 3.0
+offset_right = 209.0
+offset_bottom = 23.0
+size_flags_vertical = 4
+rounded = true
+show_percentage = false
+
+[node name="VSeparator2" type="VSeparator" parent="StatPanel/StatCtr"]
+layout_mode = 2
+offset_left = 704.0
+offset_right = 708.0
+offset_bottom = 26.0
+
+[node name="Inf" type="HSplitContainer" parent="StatPanel/StatCtr"]
+layout_mode = 2
+offset_left = 712.0
+offset_right = 765.0
+offset_bottom = 26.0
+
+[node name="InfLbl" type="Label" parent="StatPanel/StatCtr/Inf"]
+layout_mode = 2
+offset_right = 31.0
+offset_bottom = 26.0
+text = "inf."
+uppercase = true
+
+[node name="InfStat" type="Label" parent="StatPanel/StatCtr/Inf"]
+layout_mode = 2
+offset_left = 43.0
+offset_right = 53.0
+offset_bottom = 26.0
+text = "0"
 
 [node name="MessageTxt" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.00976562
 anchor_top = 0.01
 anchor_right = 0.705078
 anchor_bottom = 0.0333333
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
